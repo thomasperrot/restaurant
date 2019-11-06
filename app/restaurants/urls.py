@@ -4,5 +4,5 @@ from . import viewsets
 
 
 router = routers.SimpleRouter(trailing_slash=False)
-router.register(r'restaurants', viewsets.RestaurantViewSet)
+router.register(r"restaurants", viewsets.RestaurantViewSet)
 urlpatterns = router.urls

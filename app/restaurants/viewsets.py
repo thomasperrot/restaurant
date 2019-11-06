@@ -7,8 +7,12 @@ from rest_framework.exceptions import NotFound
 from . import models, serializers
 
 
-class RestaurantViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
-                  mixins.DestroyModelMixin, viewsets.GenericViewSet):
+class RestaurantViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet,
+):
     """A viewset for viewing, creating and deleting restaurants.
     """
 
@@ -17,7 +21,7 @@ class RestaurantViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
 
     @action(detail=False, methods=["GET"], url_path="random")
     def get_random(self, request: Request, pk: str = None) -> Response:
-        restaurant = models.Restaurant.objects.order_by('?').first()
+        restaurant = models.Restaurant.objects.order_by("?").first()
         if not restaurant:
             raise NotFound(detail="No restaurant inserted yet.", code=404)
         serializer = self.serializer_class(restaurant)
