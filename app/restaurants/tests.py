@@ -13,9 +13,7 @@ class RestaurantViewSetTestCase(TestCase):
         """Assert that users can create restaurants."""
 
         # when
-        response: Response = self.client.post(
-            "/restaurants", data={"name": "restaurant_1"}, format="json"
-        )
+        response: Response = self.client.post("/restaurants", data={"name": "restaurant_1"}, format="json")
 
         # then
         assert response.status_code == 201
@@ -29,9 +27,7 @@ class RestaurantViewSetTestCase(TestCase):
         models.Restaurant.objects.create(name="restaurant_1")
 
         # when
-        response: Response = self.client.post(
-            "/restaurants", data={"name": "restaurant_1"}, format="json"
-        )
+        response: Response = self.client.post("/restaurants", data={"name": "restaurant_1"}, format="json")
 
         # then
         assert response.status_code == 400
@@ -42,9 +38,7 @@ class RestaurantViewSetTestCase(TestCase):
         """Assert that users cannot create a restaurant named random."""
 
         # when
-        response: Response = self.client.post(
-            "/restaurants", data={"name": "random"}, format="json"
-        )
+        response: Response = self.client.post("/restaurants", data={"name": "random"}, format="json")
 
         # then
         assert response.status_code == 400
@@ -78,9 +72,7 @@ class RestaurantViewSetTestCase(TestCase):
             models.Restaurant.objects.create(name=f"restaurant_{i}")
 
         # when
-        response: Response = self.client.get(
-            "/restaurants", data={"limit": 10, "offset": 10}, format="json"
-        )
+        response: Response = self.client.get("/restaurants", data={"limit": 10, "offset": 10}, format="json")
 
         # then
         assert response.status_code == 200
@@ -98,9 +90,7 @@ class RestaurantViewSetTestCase(TestCase):
         models.Restaurant.objects.create(name=f"restaurant_1")
 
         # when
-        response: Response = self.client.delete(
-            "/restaurants/restaurant_1", format="json"
-        )
+        response: Response = self.client.delete("/restaurants/restaurant_1", format="json")
 
         # then
         assert response.status_code == 204
@@ -110,9 +100,7 @@ class RestaurantViewSetTestCase(TestCase):
         """Assert that deleting a non existing restaurant returns a 404."""
 
         # when
-        response: Response = self.client.delete(
-            f"/restaurants/restaurant_1", format="json"
-        )
+        response: Response = self.client.delete(f"/restaurants/restaurant_1", format="json")
 
         # then
         assert response.status_code == 404

@@ -8,10 +8,7 @@ from . import models, serializers
 
 
 class RestaurantViewSet(
-    mixins.CreateModelMixin,
-    mixins.ListModelMixin,
-    mixins.DestroyModelMixin,
-    viewsets.GenericViewSet,
+    mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet,
 ):
     """A viewset for viewing, creating and deleting restaurants.
     """
