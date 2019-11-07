@@ -12,6 +12,10 @@ $ python3 manage.py test
 $ python3 manage.py runserver
 ```
 
+## Documentation
+
+Documentation is available at `/swagger/`
+
 ## Improvements
 
 - use docker
