@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
+from rest_framework.filters import SearchFilter
 
 from . import models, serializers
 
@@ -15,6 +16,8 @@ class RestaurantViewSet(
 
     serializer_class = serializers.RestaurantSerializer
     queryset = models.Restaurant.objects.all()
+    filter_backends = [SearchFilter]
+    search_fields = ["name"]
 
     @action(detail=False, methods=["GET"], url_path="random")
     def get_random(self, request: Request, pk: str = None) -> Response:
