@@ -11,6 +11,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Restaurant", fields=[("name", models.CharField(max_length=100, primary_key=True, serialize=False),),],
-        ),
+            name="Restaurant", fields=[("name", models.CharField(max_length=100, primary_key=True, serialize=False))]
+        )
     ]

@@ -5,8 +5,7 @@ python:
 install:
   - pip install -r requirements/test.txt
 script:
-  - cd app
-  - coverage run --source='.' manage.py test
+  - coverage run --source='app' app/manage.py test restaurants
   - coverage report
 after_success:
   - codecov

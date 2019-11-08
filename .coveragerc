@@ -1,0 +1,12 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+source = app
+
+[report]
+ignore_errors = True
+omit =
+    app/manage.py
+
+[html]
+directory = coverage_html

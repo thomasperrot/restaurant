@@ -16,11 +16,20 @@ $ python3 manage.py migrate
 $ python3 manage.py runserver
 ```
 
+## Testing
+
+```
+$ pip3 install -r requirements/test.txt
+$ cd app
+$ python3 manage.py test
+```
+
 ## Documentation
 
-Documentation is available at `/swagger/`
+Documentation is available at `<YOUR_URL>/swagger/`
 
 ## Improvements
 
-- use docker
+- use env variables to store secrets
+- deploy in production with docker or AppEgine
 - use postgres
