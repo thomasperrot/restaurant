@@ -131,3 +131,17 @@ class RestaurantViewSetTestCase(TestCase):
         # then
         assert response.status_code == 404
         assert response.data == {"detail": "No restaurant inserted yet."}
+
+    def test_search_restaurant(self) -> None:
+        """Assert that restaurants can be searched by name."""
+
+        # given
+        models.Restaurant.objects.create(name=f"Le Petit Chateau")
+        models.Restaurant.objects.create(name=f"Le Grand Chateau")
+
+        # when
+        response: Response = self.client.get(f"/restaurants", data={"search": "petit"})
+
+        # then
+        assert response.status_code == 200
+        assert response.data == {"count": 1, "next": None, "previous": None, "results": [{"name": "Le Petit Chateau"}]}
