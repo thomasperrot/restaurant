@@ -1,8 +1,8 @@
 from django.test import TestCase
 from rest_framework.response import Response
-from rest_framework.test import APIRequestFactory, APIClient
+from rest_framework.test import APIClient
 
-from . import viewsets, models
+from . import models
 
 
 class RestaurantViewSetTestCase(TestCase):
@@ -94,7 +94,8 @@ class RestaurantViewSetTestCase(TestCase):
 
         # then
         assert response.status_code == 204
-        assert response.data == None
+        assert response.data is None
+        assert models.Restaurant.objects.count() == 0
 
     def test_delete_non_existing_restaurants(self) -> None:
         """Assert that deleting a non existing restaurant returns a 404."""
