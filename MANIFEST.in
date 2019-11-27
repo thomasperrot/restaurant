@@ -2,3 +2,4 @@ exclude requirements.txt
 exclude tox.ini
 include README.md
 include LICENSE.rst
+recursive-include restaurant *.py
